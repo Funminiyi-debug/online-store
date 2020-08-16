@@ -1,38 +1,158 @@
-.App {
+/* PROPERTY STYLES  */
+
+:root {
+  /* color: rgb(238, 221, 221) */
+  --primaryColor: rgb(39, 39, 49);
+  --backgroundColor: rgb(235, 230, 230, 0.8);
+}
+
+.price {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-bottom-right-radius: 10px;
+  background: var(--backgroundColor);
+}
+
+.rent {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-top-left-radius: 10px;
+  background-color: var(--backgroundColor);
+}
+
+.address {
+  margin: 0.5rem 0;
+  color: rgb(27, 38, 49);
+}
+
+/* END OF PROPERTY STYLES  */
+
+/* SECTIONS STYLES  */
+
+.sections {
   text-align: center;
+  margin: auto;
+  padding: 1.5rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.paragraph {
+  font-weight: bold !important;
+  text-align: left;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.paragraph>p {
+  margin: 0.5rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.avatar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 2rem;
+}
+
+.avatar div {
+  margin-right: 1rem;
+}
+
+.avatar-text {
   display: flex;
   flex-direction: column;
+}
+
+p.avatar-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+p.avatar-subtitle {
+  font-size: 0.7rem;
+  font-weight: 300;
+  margin-top: -22px;
+  margin-left: -4px;
+  color: rgb(188, 187, 196);
+}
+
+/* ADD ON STYLES  */
+
+.addon-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-left: 2rem;
 }
 
-.App-link {
-  color: #61dafb;
+.addon-icon-container {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.addon-icon {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin: 0.2rem;
+}
+
+.addon-icon>span {
+  padding: 0;
+  margin-bottom: -5px;
+}
+
+/* HOTDEAL SECTION */
+
+.sidebar-container {
+  height: 350px;
+}
+
+.sidebar-image {
+  background-size: cover;
+  width: 50%;
+  height: inherit;
+  position: relative;
+}
+
+.sidebar-content {
+  width: 50%;
+  height: inherit;
+  background: rgb(53, 48, 48);
+  float: right;
+  transform: translateY(-100%);
+}
+
+button.button {
+  font-size: 0.6rem;
+  font-weight: bold;
+}
+
+button.hotdealbutton {
+  display: absolute;
+  bottom: -90%;
+  right: 2rem;
+  background-color: var(--backgroundColor);
+}
+
+svg.icon {
+  font-size: 1rem;
+  line-height: 1rem;
+  padding: 0;
+  margin-right: 0.2rem;
+}
+
+.sidebar-content p {
+  color: rgb(161, 157, 157);
+  text-transform: capitalize;
+}
+
+.sidebar-content p, .sidebar-content button {
+  margin: 1.5rem;
 }
