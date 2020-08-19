@@ -1,27 +1,12 @@
-import React, { useState } from "react";
-import { Modal, Button, ListGroup, Table } from "react-bootstrap";
-import { makeStyles } from "@material-ui/core/styles";
-import { Avatar, Typography } from "@material-ui/core";
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: "flex",
-    "& > *": {
-      margin: theme.spacing(1),
-    },
-  },
-
-  large: {
-    width: theme.spacing(7),
-    height: theme.spacing(7),
-  },
-}));
-
-const Cart = ({ show, viewCart, cartItems }) => {
+import React from "react";
+import { Modal, Button } from "react-bootstrap";
+import { Typography } from "@material-ui/core";
+import { CartItems, Checkout } from "../components";
+import { Link } from "react-router-dom";
+const Cart = ({ show, viewCart, cartItems, deleteItem, Checkout }) => {
   const itemsExist = cartItems.length === 0 ? false : true;
-  const classes = useStyles();
   const handleClose = () => viewCart(false);
-  //   const handleShow = () => setShow(true);
+
   return (
     <>
       <Modal show={show} onHide={handleClose} animation={true} size="lg">
@@ -30,48 +15,10 @@ const Cart = ({ show, viewCart, cartItems }) => {
         </Modal.Header>
         <Modal.Body>
           {itemsExist ? (
-            <Table striped bordered hover>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Name</th>
-                  <th>Price</th>
-                  <th>no</th>
-                </tr>
-              </thead>
-              <tbody>
-                {cartItems.map((item, index) => {
-                  return (
-                    <tr>
-                      <td>{index + 1}</td>
-                      <td
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                        className={classes.root}
-                      >
-                        <Avatar
-                          alt={item.item}
-                          src={require(`../images/${item.title}/${item.image}`)}
-                          className={classes.large}
-                        />
-                        {item.item}
-                      </td>
-                      <td>#{item.price * item.count}</td>
-                      <td>{item.count}</td>
-                    </tr>
-                  );
-                })}
-                <tr>
-                  <td className="font-weight-bold">Total</td>
-                  <td></td>
-                  <td className="font-weight-bold">
-                    #{cartItems.reduce((a, b) => a + b.price * b.count, 0)}
-                  </td>
-                </tr>
-              </tbody>
-            </Table>
+            <CartItems
+              cartItems={cartItems}
+              deleteItem={deleteItem}
+            ></CartItems>
           ) : (
             <Typography variant="subtitle1">No items in Cart yet</Typography>
           )}
@@ -81,7 +28,7 @@ const Cart = ({ show, viewCart, cartItems }) => {
             Keep Shopping
           </Button>
           <Button variant="success" onClick={handleClose}>
-            Checkout
+            <Link to="/checkout">Checkout</Link>
           </Button>
         </Modal.Footer>
       </Modal>

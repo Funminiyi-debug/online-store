@@ -1,158 +1,29 @@
-/* PROPERTY STYLES  */
-
-:root {
-  /* color: rgb(238, 221, 221) */
-  --primaryColor: rgb(39, 39, 49);
-  --backgroundColor: rgb(235, 230, 230, 0.8);
+.delete-icon:hover {
+  opacity: .5;
 }
 
-.price {
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-bottom-right-radius: 10px;
-  background: var(--backgroundColor);
+/* html {
+  font-size: calc(.5rem + 1vw);
+} */
+
+.float-right {
+  float: "right"
 }
 
-.rent {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  border-top-left-radius: 10px;
-  background-color: var(--backgroundColor);
+.float-left {
+  float: "left"
 }
 
-.address {
-  margin: 0.5rem 0;
-  color: rgb(27, 38, 49);
+.paper {
+  height: 10rem;
 }
 
-/* END OF PROPERTY STYLES  */
-
-/* SECTIONS STYLES  */
-
-.sections {
-  text-align: center;
-  margin: auto;
-  padding: 1.5rem;
+a {
+  color: inherit
 }
 
-.paragraph {
-  font-weight: bold !important;
-  text-align: left;
-}
-
-.paragraph>p {
-  margin: 0.5rem;
-}
-
-.avatar {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  margin-left: 2rem;
-}
-
-.avatar div {
-  margin-right: 1rem;
-}
-
-.avatar-text {
-  display: flex;
-  flex-direction: column;
-}
-
-p.avatar-title {
-  font-size: 1rem;
-  font-weight: bold;
-  margin: 0;
-  padding: 0;
-}
-
-p.avatar-subtitle {
-  font-size: 0.7rem;
-  font-weight: 300;
-  margin-top: -22px;
-  margin-left: -4px;
-  color: rgb(188, 187, 196);
-}
-
-/* ADD ON STYLES  */
-
-.addon-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  align-items: center;
-  justify-content: center;
-  margin-left: 2rem;
-}
-
-.addon-icon-container {
-  display: flex;
-  flex-direction: row;
-  margin: 1rem;
-  align-items: center;
-}
-
-.addon-icon {
-  display: flex;
-  flex-direction: column;
-  font-weight: bold;
-  font-size: 0.9rem;
-  margin: 0.2rem;
-}
-
-.addon-icon>span {
-  padding: 0;
-  margin-bottom: -5px;
-}
-
-/* HOTDEAL SECTION */
-
-.sidebar-container {
-  height: 350px;
-}
-
-.sidebar-image {
-  background-size: cover;
-  width: 50%;
-  height: inherit;
-  position: relative;
-}
-
-.sidebar-content {
-  width: 50%;
-  height: inherit;
-  background: rgb(53, 48, 48);
-  float: right;
-  transform: translateY(-100%);
-}
-
-button.button {
-  font-size: 0.6rem;
-  font-weight: bold;
-}
-
-button.hotdealbutton {
-  display: absolute;
-  bottom: -90%;
-  right: 2rem;
-  background-color: var(--backgroundColor);
-}
-
-svg.icon {
-  font-size: 1rem;
-  line-height: 1rem;
-  padding: 0;
-  margin-right: 0.2rem;
-}
-
-.sidebar-content p {
-  color: rgb(161, 157, 157);
-  text-transform: capitalize;
-}
-
-.sidebar-content p, .sidebar-content button {
-  margin: 1.5rem;
+a:hover {
+  opacity: .5;
+  color: inherit;
+  text-decoration: none;
 }

@@ -14,7 +14,7 @@ const Panel = ({ title, data, addItem }) => {
       </Card.Header>
       <Card.Body className="panel">
         {data.map(({ name, price, image }) => (
-          <CardGroup>
+          <CardGroup key={name.toString()}>
             <Product
               item={name}
               price={price}

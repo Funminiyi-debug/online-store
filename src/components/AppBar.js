@@ -1,24 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
+import { Link } from "react-router-dom";
 // bootstrap
 import {
   Navbar,
   Nav,
-  ButtonGroup,
   Form,
   FormControl,
   DropdownButton,
   Dropdown,
-  NavDropdown,
   Badge,
 } from "react-bootstrap";
 // material ui
 import {
-  Button,
   Drawer,
   List,
   ListItem,
-  ListItemText,
-  ListItemIcon,
   Divider,
   Accordion,
   AccordionSummary,
@@ -30,6 +26,7 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { useMediaQuery } from "react-responsive";
 import "./AppBar.css";
 import { makeStyles } from "@material-ui/core/styles";
+import { Cart } from "../components";
 
 const useStyles = makeStyles({
   list: {
@@ -40,7 +37,14 @@ const useStyles = makeStyles({
   },
 });
 
-const AppBar = ({ data, viewCart }) => {
+const AppBar = ({
+  data,
+  viewCart,
+  noOfItems,
+  cartItems,
+  deleteItem,
+  showCart,
+}) => {
   const classes = useStyles();
   const [drawer, setDrawer] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 1162 });
@@ -67,8 +71,8 @@ const AppBar = ({ data, viewCart }) => {
     >
       <List>
         {data.category.map(category => (
-          <>
-            <ListItem button htmlColor="green" key={category.type.toString()}>
+          <Fragment key={category.type.toString()}>
+            <ListItem button htmlColor="green">
               <Accordion style={{ width: "100%" }}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
@@ -83,7 +87,10 @@ const AppBar = ({ data, viewCart }) => {
                 </AccordionSummary>
                 {category.items.map(item => {
                   return (
-                    <AccordionDetails className="accordion-details">
+                    <AccordionDetails
+                      className="accordion-details"
+                      key={item.toString()}
+                    >
                       <Typography>{item}</Typography>
                     </AccordionDetails>
                   );
@@ -91,7 +98,7 @@ const AppBar = ({ data, viewCart }) => {
               </Accordion>
             </ListItem>
             <Divider />
-          </>
+          </Fragment>
         ))}
       </List>
     </div>
@@ -100,7 +107,6 @@ const AppBar = ({ data, viewCart }) => {
   const renderSidebar = () => {
     return (
       <React.Fragment key="left">
-        {/* <Button>Button</Button> */}
         <Drawer anchor={"left"} open={drawer} onClose={toggleDrawer(false)}>
           {list()}
         </Drawer>
@@ -134,14 +140,16 @@ const AppBar = ({ data, viewCart }) => {
   return (
     <>
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#home">ShopNow</Navbar.Brand>
+        <Navbar.Brand>
+          <Link to="/">ShopNow</Link>
+        </Navbar.Brand>
 
         <Nav>
           <Nav.Link onClick={toggleDrawer(true)}>Categories</Nav.Link>
         </Nav>
-        <Nav className="ml-auto">
+        <Nav>
           <Nav.Link onClick={handleViewCart}>
-            <ShoppingCartIcon /> View Cart <Badge variant="light">9</Badge>
+            <ShoppingCartIcon /> Cart <Badge variant="light">{noOfItems}</Badge>
           </Nav.Link>
         </Nav>
 
@@ -158,6 +166,12 @@ const AppBar = ({ data, viewCart }) => {
             className="justify-content-end"
           />
         </Form>
+        <Cart
+          show={showCart}
+          viewCart={viewCart}
+          cartItems={cartItems}
+          deleteItem={deleteItem}
+        />
       </Navbar>
     </>
   );
